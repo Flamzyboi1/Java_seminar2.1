@@ -1,7 +1,5 @@
 package model;
 
-import java.security.PublicKey;
-
 public class Bus extends Vehicle{
 	//1. variables
 	private int numberofSeats;
@@ -10,7 +8,7 @@ public class Bus extends Vehicle{
 	public int getnumberofSeats() {
 		return numberofSeats;
 	}
-	public  boolean gethasBaggageDivision(boolean b) {
+	public  boolean gethasBaggageDivision() {
 	    return hasBaggageDivision;
 	    }
 	//3. setters
@@ -29,14 +27,20 @@ public class Bus extends Vehicle{
 		
 	}
 	//4. no arg constructors
-	public Bus(String inputTitle,float inputprice,EnergyType inputetype,int inputnumberofSeats, boolean inputhasBaggageDivision) {
+	public Bus() {
 	 super();// this will call vehicle() no args constructor
 	 setTitle("Tesla");// i would like to change default vehicle name 
 	 setVehicleCode();// need to call it because the title is changed
 	
 		setnumberofSeats(50);
-		gethasBaggageDivision(true);
+		sethasBaggageDvision(true);
 		
+	}
+	//5. args constructor
+	public Bus(String inputTitle,float inputprice,EnergyType inputetype,int inputnumberofSeats, boolean inputhasBaggageDivision) {
+		super(inputTitle,inputprice, inputetype);
+		setnumberofSeats(inputnumberofSeats);
+		sethasBaggageDvision(inputhasBaggageDivision);
 	}
 	//6. to string
 	public String toString() {
