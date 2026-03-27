@@ -33,7 +33,7 @@ public class Vehicle {
     }
 	public void setTitle(String inputTitle) {
 		if((inputTitle != null) && (!inputTitle.isEmpty())
-				&& (inputTitle.matches("[A-Za-z ]{3,100}"))) {
+				&& (inputTitle.matches("[A-Z]{1}[a-z ]{3,20}"))) {
 			Title = inputTitle;
 		}
 		else
@@ -41,19 +41,11 @@ public class Vehicle {
 			Title = "Unknown";
 		}
 	}
-			public void setVehicleCode(String inputVehicleCode) {
-				if((inputVehicleCode!= null) && (!inputVehicleCode.isEmpty())
-						&& (inputVehicleCode.matches("[A-Za-z ]{3,100}"))) {
-					VehicleCode = inputVehicleCode;
+			public void setVehicleCode() {
+				VehicleCode = Id + " "+ Title;
 				}
-				else
-				{
-					VehicleCode = "Unknown";
-				}
-			VehicleCode = "Unknown";
-		}
 			  public void setPrice(float inputPrice) {
-			    	if(inputPrice > 0 && inputPrice <=10000) {
+			    	if(inputPrice > 0 && inputPrice <=100000) {
 			    		Price = inputPrice;
 			    	}
 			    	else {
@@ -74,7 +66,7 @@ public class Vehicle {
 				public Vehicle() {
 						setId();
 						setTitle("Tesla");
-						setVehicleCode("FO 256");
+						setVehicleCode();
 						setPrice(45.700f);
 						seteType(EnergyType.electric);
 					
