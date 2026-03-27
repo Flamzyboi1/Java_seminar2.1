@@ -33,7 +33,7 @@ public class Vehicle {
     }
 	public void setTitle(String inputTitle) {
 		if((inputTitle != null) && (!inputTitle.isEmpty())
-				&& (inputTitle.matches("[A-Z]{1}[a-z ]{3,20}"))) {
+				&& (inputTitle.matches("[A-Za-z ]{3,20}"))) {
 			Title = inputTitle;
 		}
 		else
@@ -45,7 +45,7 @@ public class Vehicle {
 				VehicleCode = Id + " "+ Title;
 				}
 			  public void setPrice(float inputPrice) {
-			    	if(inputPrice > 0 && inputPrice <=100000) {
+			    	if(inputPrice > 0 && inputPrice <=1000000) {
 			    		Price = inputPrice;
 			    	}
 			    	else {
@@ -73,7 +73,7 @@ public class Vehicle {
 					
 					}
 				//5. arg constructor
-				public Vehicle(String inputTitle,String inputVehicleCode,float inputPrice,EnergyType inputeType){
+				public Vehicle(String inputTitle,float inputPrice,EnergyType inputeType){
 					setId();
 				    setTitle(inputTitle);
 				    setVehicleCode();
@@ -83,7 +83,7 @@ public class Vehicle {
 				 }
 				//6. to string
 				public String toString() {
-					String result = Id + ": " + Title+ " " + VehicleCode + Price + " EUR, " +"(" + eType + ")" ;
+					String result = Id + ": " + Title+ " " + "("+ VehicleCode +")"  + " " + Price + " EUR, " +"(" + eType + ")" ;
 					return result;
 				}
 				

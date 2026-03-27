@@ -20,7 +20,11 @@ public class Bus extends Vehicle{
 		    {
 		    	numberofSeats = 1;
 		    } 
+		
 	    }
+	public void sethasBaggageDvision() {
+		
+	}
 	}
 
 
