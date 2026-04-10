@@ -1,10 +1,15 @@
 package service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import model.Bus;
 import model.EnergyType;
+import model.Purchase;
 import model.Vehicle;
 
 public class mainService {
+	public static ArrayList<Vehicle> allVehiclesInStore = new ArrayList<Vehicle>();
 	
 	public static void main(String[] args) {
 		Vehicle v1 = new  Vehicle();
@@ -20,7 +25,21 @@ public class mainService {
 		Tractor T2 = new Tractor("Robot Tractor",6754.66f,EnergyType.hybrid, "manual",false);
 		System.out.println(T2);
 		
+		allVehiclesInStore.addAll(Arrays.asList(b1,b2,T1,T2));
+		
+		Purchase pur1 = new Purchase();
+		System.out.println(pur1);
+		Purchase pur2 = new Purchase("XX98765");
+		pur2.addVehicleToShoppingListByVehicleCode("2 Tesla", 1);
+		pur2.addVehicleToShoppingListByVehicleCode("3 Toyota", 1);
+		System.out.println(pur2);
+		
+		
+		System.out.println("------ALL VECHICLES IN THE STORE------");
+		System.out.println(allVehiclesInStore);
+
 		}
+	
 	
 
 }

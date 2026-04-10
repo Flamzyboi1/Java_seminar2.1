@@ -3,6 +3,8 @@ package model;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+import service.mainService;
+
 public class Purchase {
 	//1.variable
 	private String userCardNo;
@@ -19,7 +21,7 @@ public class Purchase {
 	}
 	//setters
 	public void setUserCardNo(String inputUserCardNo) {
-		if(inputUserCardNo != null && !inputUserCardNo.isEmpty()&& inputUserCardNo.matches("[A-Z{2}[0-9]{5}")) {
+		if(inputUserCardNo != null && !inputUserCardNo.isEmpty()&& inputUserCardNo.matches("[A-Z]{2}[0-9]{5}")) {
 			userCardNo =inputUserCardNo;
 		}
 		else {
@@ -48,10 +50,31 @@ public class Purchase {
 	}
 	public Purchase(String inputUserCardNo) {
 		setUserCardNo(inputUserCardNo);
+		//we dont need to call set function for shoppinglist because it is initialized
+				//we ddont need to call set function for date time it is also initialized in variable declaration
 	}
 	//5. to string
 	public String toString() {
 		String result = userCardNo + ": " + shoppinglist + "["+ datetime + "]";
 		return result;
+	}
+	//6. additional functions
+	public void addVehicleToShoppingListByVehicleCode(String inputVehicleCode,int quantity) {
+		//TODO check input parameters
+		int howManyvecFindInStore = 0;
+		for(int i = 0; i < mainService.allVehiclesInStore.size(); i++) {
+			Vehicle tempV = mainService.allVehiclesInStore.get(i);
+			if(tempV.getVehicleCode().equals(inputVehicleCode)) {
+				mainService.allVehiclesInStore.remove(tempV);
+				shoppinglist.add(tempV);
+				howManyvecFindInStore++;
+			}
+		}
+		if(quantity>howManyvecFindInStore) {
+			System.out.println("There is no "+quantity + "Vechiles with code" +inputVehicleCode);
+		}
+		else {
+			System.out.println("Vehicles are stored in the shopping list");
+		}
 	}
 }
