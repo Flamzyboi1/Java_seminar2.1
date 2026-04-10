@@ -38,4 +38,20 @@ public class Purchase {
 	}
 
     }
+	//no set function for datetime it will be added automatically
+	//4. constructors
+	public Purchase() {
+		setUserCardNo("AB12345");
+		//we dont need to call set function for shoppinglist because it is initialized
+		//we ddont need to call set function for date time it is also initialized in variable declaration
+		
+	}
+	public Purchase(String inputUserCardNo) {
+		setUserCardNo(inputUserCardNo);
+	}
+	//5. to string
+	public String toString() {
+		String result = userCardNo + ": " + shoppinglist + "["+ datetime + "]";
+		return result;
+	}
 }
