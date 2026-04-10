@@ -77,4 +77,29 @@ public class Purchase {
 			System.out.println("Vehicles are stored in the shopping list");
 		}
 	}
+	public void removeVehicleFromShoppingListByVehicleCode(String inputVehicleCode,int quantity) {
+		//TODO check input parameters
+		boolean findvehicle = false;
+		for(int i = 0; i < shoppinglist.size(); i++) {
+			Vehicle tempV= shoppinglist.get(i);
+			if(tempV.getVehicleCode().equals(inputVehicleCode)) {
+				shoppinglist.remove(i);
+				mainService.allVehiclesInStore.add(tempV);
+				findvehicle = true;
+			}
+		}
+		if(findvehicle) {
+			System.out.println("Vechiles with code" + inputVehicleCode + "is removed from shopping list");
+		}
+		else {
+			System.out.println("There are no vehicles with code");
+		}
+	}
+	public float calculateShoppingListValue() {
+		float sum = 0;
+				for(Vehicle tempV : shoppinglist) {
+					sum = sum + tempV.getPrice();
+				}
+		return sum;
+	}
 }
