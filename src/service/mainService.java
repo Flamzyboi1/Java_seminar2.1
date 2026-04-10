@@ -48,8 +48,34 @@ public class mainService {
 
 		System.out.println("-------ALL VEHICLES IN THE STORE AFTER BUYING BUT RETURNING 2 Tesla---------");
 		System.out.println(allVehiclesInStore);
-
+		
+		System.out.println("------ALL VECHICLES IN THE STORE less than 10k------");
+		try
+		{
+		ArrayList<Vehicle> vechiceleLess10k 
+		= showVehicleIfPriceLessThan10000();
+		System.out.println(vechiceleLess10k);
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
+	}
+		
+		
+		
+	public static ArrayList<Vehicle> showVehicleIfPriceLessThan10000()
+			throws Exception{
+		ArrayList<Vehicle> result = new ArrayList<Vehicle>();
+		for (Vehicle tempV: allVehiclesInStore) {
+			if(tempV.getPrice()<10000) {
+				result.add(tempV);
+			}
+		}
+		if(result.isEmpty()) {
+			throw new Exception("There is no vehicle in the store"+
+		"which price is less than 10000Eur");
+		}
+		return result;
+	}
 	
 	
 
